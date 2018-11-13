@@ -5,7 +5,7 @@ describe('delegator', () => {
   before(() => {
     document.body.innerHTML = `
       <div id="container">
-        <li class="item"><span id="btn1">hello</span></li>
+        <li class="item" id="item1"><span id="btn1">hello</span></li>
         <li class="item"><span>world</span></li>
       </div>
     `
@@ -22,6 +22,8 @@ describe('delegator', () => {
     it('可以代理事件并响应', (done) => {
       delegator.on('click', 'li.item', function (e) {
         e.target.innerText.should.equal('hello')
+        // this 应当指向正确的元素
+        this.should.equal(document.getElementById('item1'))
         // TODO
         done()
       })
