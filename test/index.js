@@ -14,8 +14,8 @@ describe('delegator', () => {
   describe('第一次绑定', () => {
     it('可以拿到root节点', () => {
       delegator = new Delegator('#container')
-  
-      document.getElementById('container')
+
+      document.getElementById('container') 
         .should.equal(delegator.root)
     })
   
@@ -28,7 +28,7 @@ describe('delegator', () => {
         done()
       })
   
-      // trigger
+    //   // trigger
       document.querySelector('#btn1').click()
     })
 
@@ -43,7 +43,7 @@ describe('delegator', () => {
       let times = 0
       delegator = new Delegator('#container')
 
-      delegator.on('click', 'li.item', function (e) {
+      delegator.on('click', 'li.item', function () {
         // 这个再触发
         times.should.equal(1)
         done()
